@@ -16,7 +16,8 @@ namespace ServerBranding
             {
                 writer.WriteUInt64(1ul);
                 writer.WriteUInt32(1);
-                writer.WriteByte((byte)SyncList<SyncUnit>.Operation.OP_ADD);
+                writer.WriteByte((byte)SyncList<SyncUnit>.Operation.OP_INSERT);
+                writer.WriteUInt32(0);
                 writer.WriteByte((byte)spawnableTeamType);
                 writer.WriteString(name);
             });
