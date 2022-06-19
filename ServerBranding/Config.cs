@@ -4,6 +4,6 @@ namespace ServerBranding
 {
     public class Config : IConfig
     {
-        public bool IsEnabled { get; set; }
+        public bool IsEnabled { get; set; } = true;
     }
 }
