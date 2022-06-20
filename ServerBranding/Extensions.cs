@@ -8,10 +8,8 @@ namespace ServerBranding
 {
     public static class Extensions
     {
-        // stolen from joker
         public static void SendFakeUnitName(this Player target, string name, SpawnableTeamType spawnableTeamType = SpawnableTeamType.NineTailedFox)
         {
-            // Log.Debug($"{nameof(SendFakeUnitName)}: Sending {target.Nickname} a fake unit name: {name}", plugin.Config.Debug);
             MirrorExtensions.SendFakeSyncObject(target, RespawnManager.Singleton.NamingManager.netIdentity, typeof(UnitNamingManager), writer =>
             {
                 writer.WriteUInt64(1ul);
@@ -31,6 +29,11 @@ namespace ServerBranding
                 typeof(CharacterClassManager),
                 nameof(CharacterClassManager.NetworkCurClass),
                 (sbyte)RoleType.NtfCaptain);
+
+            // This shows the Mtf units to people who are not Mtf.
+            // Do this for each RoleType (excluding Mtf/Guards).
+            // This also shows all of the other Mtf units to the person with that RoleType.
+            UnitNamingManager.RolesWithEnforcedDefaultName.Add(RoleType.ClassD, SpawnableTeamType.NineTailedFox);
         }
     }
 }
