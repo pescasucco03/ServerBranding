@@ -29,7 +29,7 @@ namespace ServerBranding
                          .Where(x => x.GetTeam() != Team.MTF))
             {
                 UnitNamingManager.RolesWithEnforcedDefaultName.Add(type,
-                    type.GetSide() is Side.Scp or Side.ChaosInsurgency
+                    type.GetSide() == Side.Scp || type.GetSide() == Side.ChaosInsurgency
                         ? SpawnableTeamType.ChaosInsurgency
                         : SpawnableTeamType.NineTailedFox);
             }
